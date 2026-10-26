@@ -1,11 +1,18 @@
 const mylibrary = []
 
-function book(name,author,pages,read){
-    this.id = crypto.randomUUID();
-    this.name = name;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+
+class book{
+    constructor(name,author,pages,read){
+        this.id = crypto.randomUUID();
+        this.name = name;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    changeit(){
+        return this.read = !this.read ? false : true;
+    }
 }
 
 
@@ -14,7 +21,6 @@ function addbooktolibrary(name,author,pages,read){
     mylibrary.push(newbook);
     return newbook;
 }
-
 addbooktolibrary("Malý princ", "Antoine de Saint-Exupéry", 107,true)
 addbooktolibrary("Farma zvířat", "George Orwell", 165,false)
 addbooktolibrary("Spalovač mrtvol", "Ladislav Fuks", 220,true)
@@ -48,9 +54,6 @@ function displaybooks(){
     
 }
 
-book.prototype.changeit = function(){
-    return this.read = this.read ? false : true;
-}
 function Deletebook (bookid){
     for (let i = 0; i < mylibrary.length; i++){
     if (mylibrary[i].id == bookid){
